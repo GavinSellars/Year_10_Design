@@ -1,0 +1,68 @@
+<html>
+    <head>
+        
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <link href="general.css" rel="stylesheet">
+        <script src= 'plotly.min.js'></script>
+        <link rel="shortcut icon" href="#">
+        
+        
+
+ 
+    </head>
+
+    <body >
+        
+
+            <ul id="Navigator" >
+                <li class= 'pages'><a  href="index.html" ><h3>Home</h3></a></li>
+                <li class= 'pages'><a  href="data.html"  ><h3>Data</h3></a></li>
+                <li class= 'pages'><a  href="community.html" ><h3>Community</h3></a></li>
+            </ul>
+  
+            <p id = welcome>Welcome!<br> UCC Year 10</p>
+
+            <div id='explainHolder'>
+            <p class='explain'> Over the course of the past few months, quarantine has seen many of us
+                unable to spend as much time as we might like being outside and active with 
+                the various sports and programs that would normally be running. This website offers
+                a way to help anyone feeling they need to spend more time exercising. 
+                Using an iPhone or other device which automatically records the number of steps 
+                you take each day, you can enter your number each day and look back at your 
+                progress over time. You can add other friends on your site and compare your
+                numbers to their's, and get competitive to see who can get the most steps each day.
+                Enjoy!
+            </p>
+            </div>
+
+
+
+        <div id= statsContainer>
+                
+            <div class = 'statBoxes'> 
+                <p class ='Title'> HighScore:</p> 
+                <p class= 'display' id= 'highest'> </p>
+            </div>
+
+            <div class = 'statBoxes'>
+                <p class ='Title'> Current Streak:</p>
+                <p class= 'display' id = 'streak'> </p>
+            </div>
+            
+        
+            
+        </div>
+
+
+            
+            <script src = 'fitnessBoth.js'></script>
+            <script  src="fitnessOnlyHome.js"></script>
+    </body>
+    
+    
+    
+</html>

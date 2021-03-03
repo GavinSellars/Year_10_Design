@@ -1,0 +1,281 @@
+#Navigator {
+    overflow: hidden;
+    list-style-type: none;
+    margin: 0;
+    color: #3157e1;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(227, 227, 227);
+};
+
+
+
+.So{
+    float: right;
+    color: #3157e1;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+}
+
+#welcome {
+    color: #3157e1;
+    font-size: 80;
+    font: Times, Times New Roman, serif;
+    font-weight: bold;
+    margin: 20;
+
+}
+
+.Title {
+    font-size: 50;
+    font: Times, Times New Roman, serif;
+    font-weight: bold;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin: 0;
+
+}
+
+.display {
+    color: #3157e1;
+    font-size: 40;
+    font: Times, Times New Roman, serif;
+    font-weight: bold;
+
+}
+
+.display1 {
+    display: inline;
+    color: #3157e1;
+    font-size: 40;
+    font: Times, Times New Roman, serif;
+    font-weight: bold;
+
+}
+
+#statsContainer{
+    text-align: center;
+    padding: 30px;
+}
+
+.statBoxes {
+    padding: 15px;
+    display:inline-block;
+    font: Times, Times New Roman, serif;
+    text-align: center;
+    margin: auto;
+    width: 40%;
+    border: 3px solid rgb(227, 227, 227);
+    padding: 5px;
+    margin: 15px;
+}
+
+.even {
+    display: inline;
+}
+
+#dataExplainHolder {
+    color: #3157e1;
+    font: Times, Times New Roman, serif;
+    text-align: center;
+    position: relative;
+    font-size: 20;
+    margin: auto;
+    margin-top: 5px;
+    width: 90%;
+    border: 3px solid rgb(227, 227, 227);
+    padding: 5px;
+
+}
+
+#explainHolder {
+    color: #3157e1;
+    font: Times, Times New Roman, serif;
+    text-align: center;
+    position: relative;
+    font-size: 20;
+    margin: auto;
+    width: 50%;
+    border: 3px solid rgb(227, 227, 227);
+    padding: 5px;
+
+
+}
+
+.friendsSelectorStyling {
+    position:relative;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    border: 2px solid  #3157e1;
+    border-radius: 4px;
+    font-size: 120%
+
+    
+}
+.friendsSelectorStyling select {
+    display:none;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  
+  /* Point the arrow upwards when the select box is open (active): */
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }
+  
+  /* style the items (options), including the selected item: */
+  .select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+  }
+  
+  /* Style items (options): */
+  .select-items {
+    position: absolute;
+    background-color: #3157e1;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  
+  /* Hide the items when the select box is closed: */
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+#friendsFinder{
+    padding: 5px 20px;
+    box-sizing: border-box;
+    border: 2px solid  #3157e1;
+    border-radius: 4px;
+    font-size: 120%
+}
+
+.friendsFinderbtnn {
+    padding: 5px 20px;
+    margin: 20px 0;
+    box-sizing: border-box;
+    border: 2px solid  #3157e1;
+    border-radius: 4px;
+    font-size: 120%
+}
+
+.friendsFinderbtnn1 {
+    display: inline;
+    padding: 5px 20px;
+    margin: 20px 0;
+    box-sizing: border-box;
+    border: 2px solid  #3157e1;
+    border-radius: 4px;
+    font-size: 120%
+}
+
+
+#stepsInput {
+    border: 2px solid #3157e1;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 40px;
+    margin-left: 60px;
+  }
+
+#stepsSubmit {
+    background-color: rgb(227, 227, 227);
+    color: black;
+    border: 2px solid #3157e1;
+    text-align: center;
+
+}
+
+#friendsFinder{
+    background-color: rgb(227, 227, 227);
+    color: black;
+    border: 2px solid #3157e1;
+    text-align: center;
+}
+
+.pages{
+    float: left;
+    color: #3157e1;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.pages:hover {
+    background-color: rgb(19, 12, 124);
+}
+
+.centerChild {
+    text-align: center;
+}
+
+#register{
+    position: absolute;
+    text-align: center;
+    z-index: 1000!important;
+    border-radius: 25px;
+    border: 2px solid #2d6ce2;
+    padding: 20px;
+    width: 70%;
+    font-size: 50px;
+    height: 300px;
+    color: #2d6ce2;
+    background-color: #d5d9dfec;
+    top: 100px;
+    left: 150px;
+
+}
+
+.registerText {
+    display: inline;
+    left: 340;
+
+}
+.LoginBtnCSS {
+    display: inline;
+    color: blue;
+    background-color: #acb0b6e3;
+    font-size: 50px;
+    position: relative;
+    bottom: -50;
+    
+   
+}
+
+.InOut {
+  float: right;
+  display: block;
+  color: #3157e1;
+  text-align: center;
+  padding: 5px 16px;
+  text-decoration: none;
+
+}
+
+.InOut:hover {
+    background-color: rgb(19, 12, 124);
+}
+
+a:visited {color:#3157e1;}

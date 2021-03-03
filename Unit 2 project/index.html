@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <title>Pokemon Nostalgia</title>
+
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        
+
+        <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Stick&display=swap" rel="stylesheet">
+        
+        <style>
+
+            * {
+                font-family: 'Akaya Telivigala', cursive;
+            }
+
+            .topnav {
+            background-color: #003A70;
+            overflow: hidden;
+            }
+
+            /* Style the links inside the navigation bar */
+            .topnav a {
+            float: left;
+            display: block;
+            color: #FFCB05;
+            text-align: center;
+            padding: 25px 30px;
+            text-decoration: none;
+            font-size: 26px;
+            }
+
+            /* Change the color of links on hover */
+            .topnav a:hover {
+            background-color: #22528d;
+            color: #FFCB05;
+            }
+
+            #title{
+                font-family: 'Stick', sans-serif;
+                padding: 20px 30px;
+            }
+
+            #uid{
+                background-color:#003A70;
+                color: #dac77f;
+            }
+
+            #uid:hover{
+                background-color:#003A70;
+                color: #FFCB05;
+            }
+
+            #signIn {
+                float: right;
+            }
+
+            #signIn:hover {
+                cursor: pointer;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="topnav" id="myTopnav">
+        <a id = "title" href="#home" class="active">POKEMON NOSTALGIA</a>
+        <a href="#rules">Rules</a>
+        <a id = uid>You aren't signed in</a>
+        <a id = "signIn" onclick = "signin()">Sign In</a>
+        </div>
+
+
+
+
+
+
+
+    </body>
+
+    <script>
+
+        var provider = new firebase.auth.GoogleAuthProvider();
+        var userId = document.getElementById("uid").innerHTML;
+
+        var config = 
+        {
+            apiKey: "AIzaSyBwqPZ7xbApl1rq6NJYvlYT-uc_lPJpAsU",
+            authDomain: "forum-test-9ec2b.firebaseapp.com",
+            databaseURL: "https://forum-test-9ec2b-default-rtdb.firebaseio.com",
+            projectId: "forum-test-9ec2b",
+            storageBucket: "forum-test-9ec2b.appspot.com",
+            messagingSenderId: "966503766069",
+            appId: "1:966503766069:web:2357b7d4c1cf346c8b797c",
+            measurementId: "G-TJLGM41CNQ"
+        };
+
+        firebase.initializeApp(config);
+
+        firebase.auth().onAuthStateChanged(function(user) 
+        {
+            if (user == null) 
+            {
+                document.getElementById("uid").innerHTML = "You aren't signed in";
+
+                document.getElementById("signIn").innerHTML = "Sign In";
+                document.getElementById("signIn").setAttribute( "onClick", "javascript: signin();" );
+                return;
+            } 
+            else 
+            {
+                userId = user.displayName; 
+                document.getElementById("uid").innerHTML = "Welcome " + userId + "!";
+                
+                document.getElementById("signIn").innerHTML = "Sign Out";
+                document.getElementById("signIn").setAttribute( "onClick", "javascript: signout();" );
+            } 
+        }); 
+
+        function signin() 
+        {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider).then(() => {}).catch((error) => {});
+        }
+
+        function signout() 
+        {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signOut().then(() => {}).catch((error) => {});
+
+        }
+        
+    </script>
+</html>

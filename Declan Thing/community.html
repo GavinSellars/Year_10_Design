@@ -1,0 +1,77 @@
+<html>
+    <head>
+        
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <link href="general.css" rel="stylesheet">
+        <script src= 'plotly.min.js'></script>
+        <link rel="shortcut icon" href="#">
+        
+        
+
+ 
+    </head>
+
+    <body >
+        
+
+            <ul id="Navigator" >
+                <li class= 'pages'><a  href="index.html" ><h3>Home</h3></a></li>
+                <li class= 'pages'><a  href="data.html"  ><h3>Data</h3></a></li>
+                <li class= 'pages'><a  href="community.html" ><h3>Community</h3></a></li>
+            </ul>
+  
+            <p id = welcome>Welcome!<br> To The Section <br> For Community</p>
+
+            <div id='explainHolder'>
+            <p class='explain'> In this page, you will be able to observe the same information you
+                could on your home page, but with one key difference. Here, you can add friends 
+                from the UCC community and choose which person you want to compare your data to.
+                In the future, some more functionality may be added here / on the data page, but
+                this is a proof of concept and there is currently none of that functionality.
+            </p>
+            </div>
+
+            <div><br></div>
+
+            <div class = 'centerChild'>
+            <select class="even, friendsSelectorStyling" id= 'friendsSelector' onchange="FriendSelectData()" > 
+                <option value="Which of Your friends' data would you like to see?">Which of Your friends' data would you like to see?</option>
+            </select>
+                
+                
+            <div><br></div>
+            <input class= 'centerChild, even' id='friendsFinder' placeholder="Type in the full name of your friend ( as normal but with no capitals)">
+            <button onclick = "findFriends();" class= 'friendsFinderbtnn'> Search </button>
+            </div>
+
+            <div id= 'friendsResults' class = 'centerChild'></div>
+
+
+        <div id= statsContainer>
+                
+            <div class = 'statBoxes'> 
+                <p class ='Title'> HighScore:</p> 
+                <p class= 'display' id= 'friendHighest'> </p>
+            </div>
+
+            <div class = 'statBoxes'>
+                <p class ='Title'> Current Streak:</p>
+                <p class= 'display' id = 'friendStreak'> </p>
+            </div>
+            
+        
+            
+        </div>
+
+
+            <script type="text/javascript" src = 'fitnessBoth.js'></script>
+            <script type="text/javascript" src="fitnessOnlyComm.js"></script>
+    </body>
+    
+    
+    
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <link rel="shortcut icon" href="#">
+        <script src= 'plotly.min.js'></script>
+    </head>
+
+    <body>
+        <link href="general.css" rel="stylesheet">
+        <script  src="fitnessBoth.js"></script>
+        <script  src="FitnessOnlyData.js"></script>
+
+        <ul id="Navigator" >
+            <li class= 'pages'><a  href="index.html" ><h3>Home</h3></a></li>
+            <li class= 'pages'><a  href="data.html"  ><h3>Data</h3></a></li>
+            <li class= 'pages'><a  href="community.html" ><h3>Community</h3></a></li>
+        </ul>
+
+        <div id='dataExplainHolder'>
+            
+            <p class='explain'> Here you can input your step data which can easily be gathered
+                through your iphone or other device. Over time you'll be able to track your 
+                progress and see how you've gotten to take more steps each day. On the friends
+                page, you can also look at your friends' data, and see how you stack up. To 
+                maintain data integrity, you will only be able to submit one step score
+                each day. Enjoy!
+            </p>
+        </div>
+        
+        <input class = 'centerChild' type="text" id="stepsInput"  placeholder="your steps for today here">
+        
+        <button onclick = "currentTime();" id= 'stepsSubmit'> Submit </button>
+        <div><br></div>
+        <div id='chart'></div>
+
+
+    </body>
+
+
+
+</html>

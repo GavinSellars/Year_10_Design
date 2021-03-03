@@ -1,9 +1,7 @@
 <html>
     <head>
         <title>Password Strength Checker and Generator</title>
-
         
-        <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> 
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -11,8 +9,6 @@
         <meta name="robots" content="noindex, nofollow">
         <meta name="googlebot" content="noindex, nofollow">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-       
 
         <style>
             #checkerTitle {
@@ -143,11 +139,11 @@
                 color: black;
                 }
 
-                input[type=checkbox] {
+            input[type=checkbox] {
                 display: none;
                 }
 
-                input[type=checkbox] + label:before {
+            input[type=checkbox] + label:before {
                 content: "\2714";
                 border: 0.1em solid #000;
                 border-radius: 0.2em;
@@ -162,98 +158,96 @@
                 transition: .4s;
                 }
 
-                input[type=checkbox] + label:active:before {
+            input[type=checkbox] + label:active:before {
                 transform: scale(0);
                 }
 
-                input[type=checkbox]:checked + label:before {
+            input[type=checkbox]:checked + label:before {
                 background-color: rgb(235, 74, 187);
                 border-color: rgb(235, 74, 187);
                 color: #fff;
                 }
 
-                input[type=checkbox]:disabled + label:before {
+            input[type=checkbox]:disabled + label:before {
                 transform: scale(1);
                 border-color: #aaa;
                 }
 
-                input[type=checkbox]:checked:disabled + label:before {
+            input[type=checkbox]:checked:disabled + label:before {
                 transform: scale(1);
                 background-color: #bfb;
                 border-color: #bfb;
                 }
 
-                .checkboxes {
-                    width: 15%;
-                    display: inline-block;
-                    float: left;
+            .checkboxes {
+                width: 15%;
+                display: inline-block;
+                float: left;
+            }
+
+            #checkboxSpace {
+                width: 20px;
+                float: left;
+                color: rgb(219, 170, 211);
+            }
+
+            #generateButton {
+                padding-top: 40px;
+                padding-left: 300px;
+            }
+
+            a{
+                display: block;
+                width: 250px;
+                height: 50px;
+                line-height: 42px;
+                font-weight: bold;
+                background:rgb(226, 129, 197);
+                text-align: center;
+                color: rgb(0, 0, 0);
+                letter-spacing: 2px;
+                border: 3px solid rgb(29, 16, 25);
                 }
 
-                #checkboxSpace {
-                    width: 20px;
-                    float: left;
-                    color: rgb(219, 170, 211);
-                }
+            #passwordText {
+                line-height: 50px;
+                font-weight: bold;
+                text-align: center;
+                font-size: 30pt;
+                padding-top: 60px;
+                padding-bottom: 30px;
+            }
 
-                #generateButton {
-                    padding-top: 40px;
-                    padding-left: 300px;
-                }
+            ::placeholder {
+                color: grey;
 
-                a{
-                    display: block;
-                    width: 250px;
-                    height: 50px;
-                    line-height: 42px;
-                    font-weight: bold;
-                    background:rgb(226, 129, 197);
-                    text-align: center;
-                    color: rgb(0, 0, 0);
-                    letter-spacing: 2px;
-                    border: 3px solid rgb(29, 16, 25);
-                    }
+            }
 
-                #passwordText {
-                    line-height: 50px;
-                    font-weight: bold;
-                    text-align: center;
-                    font-size: 30pt;
-                    padding-top: 60px;
-                    padding-bottom: 30px;
-                }
+            #generatedPassword {
+                width: 80%;
+                height: 100px;
+                display: block;
+                font-weight: bold;
+                background:rgb(226, 129, 197);
+                text-align: center;
+                color: rgb(0, 0, 0);
+                letter-spacing: 2px;
+                border: 3px solid rgb(29, 16, 25);
+                line-height: 92px;
+                font-size: 20pt;
+                margin: 0 auto;
+            }
 
-                ::placeholder {
-                    color: grey;
+            #mustBe {
+                line-height: 20px;
+                font-weight: normal;
+            }
 
-                }
-
-                #generatedPassword {
-                    width: 80%;
-                    height: 100px;
-                    display: block;
-                    font-weight: bold;
-                    background:rgb(226, 129, 197);
-                    text-align: center;
-                    color: rgb(0, 0, 0);
-                    letter-spacing: 2px;
-                    border: 3px solid rgb(29, 16, 25);
-                    line-height: 92px;
-                    font-size: 20pt;
-                    margin: 0 auto;
-                }
-
-                #mustBe {
-                    line-height: 20px;
-                    font-weight: normal;
-                }
-
-                #points {
-                    font-size: 20pt;
-                    padding-left: 100px;
-                }
-
+            #points {
+                font-size: 20pt;
+                padding-left: 100px;
+            }
         </style>
-     
     </head>
     <body>
 <div id="checkerTitle">Strength Checker</div>
@@ -284,17 +278,12 @@
     <p id="points">- make it memorable, but hard to guess</p>
     <p id="points">- generate a password if you have no strong ideas</p>
 
-
-
-    
-
 </div>
 
 <div class="generatorBody">
 
     <div id="lengthGen">
-        Length: <input id="lengthGenInput" maxlength="2" placeholder="4-99">
-        
+        Length: <input id="lengthGenInput" maxlength="2" placeholder="4-99"> 
     </div>
 
     <div id="checkboxSpace">____</div>
@@ -342,8 +331,6 @@
     <p id="points">- generate a password if you have no strong ideas</p>
 </div>
      
-
-
 <script>
     type="text/javascript"
     src="/js/lib/dummy.js"
@@ -557,14 +544,8 @@
         numbersCheckbox.checked = false;
         uppercaseCheckbox.checked = false;
         lowercaseCheckbox.checked = false;
-
     }
 
 </script>
-
-
-
-
-
     </body>
   </html>

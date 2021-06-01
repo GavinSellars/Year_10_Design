@@ -1,0 +1,200 @@
+<html>
+    <head>
+        <title>Pokemon Nostalgia</title>
+
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        
+
+        <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Stick&display=swap" rel="stylesheet">
+        
+        <style>
+
+            * {
+                font-family: 'Akaya Telivigala', cursive;
+            }
+
+            .everything {
+                background-color: lightblue;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .topnav {
+            background-color: #003A70;
+            overflow: hidden;
+            }
+
+            .topnav a {
+            float: left;
+            display: block;
+            color: #FFCB05;
+            text-align: center;
+            padding: 25px 30px;
+            text-decoration: none;
+            font-size: 40px;
+            transition: 0.5s;
+            }
+            
+            .topnav a:hover {
+            background-color: #22528d;
+            color: #FFCB05;
+            transition: 0.5s;
+            }
+
+            #title{
+                font-family: 'Stick', sans-serif;
+                padding: 20px 30px;
+            }
+
+            #uid{
+                background-color:#003A70;
+                color: #FFCB05;
+            }
+
+            #uid:hover{
+                background-color:#003A70;
+                color: #FFCB05;
+            }
+
+            #signIn {
+                float: right;
+                transition: 0.5s;
+            }
+
+            #signIn:hover {
+                cursor: pointer;
+            }
+
+            #space {
+                height: 30px;
+                background-color: lightblue;
+            }
+
+            .rulesBody {
+                width: 100%;
+                height: 548px;
+                background-color:#2a75bb;
+                color: #d3bc62;
+                text-align: center;
+                font-size: 60px;
+            }
+
+            #rulesBodyHeader {
+                transition: 0.5s;
+            }
+
+            #rulesBodyHeader:hover {
+                transition: 0.5s;
+                cursor: pointer;
+                background-color:#4480b8;
+            }
+
+            #rulesBodyDescription {
+                width: 100%;
+                height: 550px;
+                background-color:#627f9b;
+                text-align: left;
+                font-size: 26px;
+                text-align: center;
+            }
+
+
+
+            
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="everything">
+
+            <div class="topnav" id="myTopnav">
+            <a id = "title" href="index.html" class="active">POKEMON NOSTALGIA</a>
+            <a href="rules.html">Rules</a>
+            <a id = uid>You aren't signed in</a>
+            <a id = "signIn" onclick = "signin()">Sign In</a>
+            </div>
+
+            <div id="space"></div>
+
+            <div class="rulesBody">
+                <a id="rulesBodyHeader">Rules</a> 
+
+                <div id="rulesBodyDescription">
+                    <p>Don't insult or attack other users</p>
+                    <p>Don't spread illegal content</p>
+                    <p>Don't provoke arguments</p>
+                    <p>Don't make abusive or harassing posts toward other users</p>
+                    <p>Don't misinform other users intentionally</p>
+                    <p>Be respectful to all other users</p>
+                    <p>Don't spam</p>
+                    <p>Don't post inappropriate content</p>
+                    <p>All content can be removed at the moderator's discretion</p>
+                    <p>Enjoy!</p>
+                </div>
+
+
+
+        </div>
+    </body>
+
+    <script>
+
+        var provider = new firebase.auth.GoogleAuthProvider();
+
+        var config = 
+        {
+            apiKey: "AIzaSyBwqPZ7xbApl1rq6NJYvlYT-uc_lPJpAsU",
+            authDomain: "forum-test-9ec2b.firebaseapp.com",
+            databaseURL: "https://forum-test-9ec2b-default-rtdb.firebaseio.com",
+            projectId: "forum-test-9ec2b",
+            storageBucket: "forum-test-9ec2b.appspot.com",
+            messagingSenderId: "966503766069",
+            appId: "1:966503766069:web:2357b7d4c1cf346c8b797c",
+            measurementId: "G-TJLGM41CNQ"
+        };
+
+        firebase.initializeApp(config);
+
+        firebase.auth().onAuthStateChanged(function(user) 
+        {
+            if (user == null) 
+            {
+                document.getElementById("uid").innerHTML = "You aren't signed in";
+
+                document.getElementById("signIn").innerHTML = "Sign In";
+                document.getElementById("signIn").setAttribute( "onClick", "javascript: signin();" );
+                return;
+            } 
+            else 
+            {
+                userId = user.displayName; 
+                document.getElementById("uid").innerHTML = "Welcome " + userId + "!";
+                
+                document.getElementById("signIn").innerHTML = "Sign Out";
+                document.getElementById("signIn").setAttribute( "onClick", "javascript: signout();" );
+            } 
+        }); 
+
+        function signin() 
+        {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider).then(() => {}).catch((error) => {});
+        }
+
+        function signout() 
+        {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signOut().then(() => {}).catch((error) => {});
+
+        }
+        
+    </script>
+</html>

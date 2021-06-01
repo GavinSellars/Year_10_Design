@@ -1,0 +1,451 @@
+<html>
+    <head>
+        <title>Pokemon Nostalgia</title>
+
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        
+
+        <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Stick&display=swap" rel="stylesheet">
+        
+        <style>
+
+            * {
+                font-family: 'Akaya Telivigala', cursive;
+            }
+
+            .everything {
+                background-color: lightblue;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .topnav {
+            background-color: #003A70;
+            overflow: hidden;
+            }
+
+            .topnav a {
+            float: left;
+            display: block;
+            color: #FFCB05;
+            text-align: center;
+            padding: 25px 30px;
+            text-decoration: none;
+            font-size: 40px;
+            transition: 0.5s;
+            }
+            
+            .topnav a:hover {
+            background-color: #22528d;
+            color: #FFCB05;
+            transition: 0.5s;
+            }
+
+            #title{
+                font-family: 'Stick', sans-serif;
+                padding: 20px 30px;
+            }
+
+            #uid{
+                background-color:#003A70;
+                color: #FFCB05;
+            }
+
+            #uid:hover{
+                background-color:#003A70;
+                color: #FFCB05;
+            }
+
+            #signIn {
+                float: right;
+                transition: 0.5s;
+            }
+
+            #signIn:hover {
+                cursor: pointer;
+            }
+
+            #space {
+                height: 30px;
+                background-color: lightblue;
+            }
+
+            .discussionBody {
+                width: 100%;
+                height: 650px;
+                background-color:#2a75bb;
+                color: #d3bc62;
+                text-align: center;
+                font-size: 60px;
+            }
+
+            #discussionBodyHeader {
+                transition: 0.5s;
+            }
+
+            #discussionBodyHeader:hover {
+                transition: 0.5s;
+                cursor: pointer;
+                background-color:#4480b8;
+            }
+
+            #discussionBodyPosts {
+                width: 100%;
+                height: 0px;
+                background-color:#627f9b;
+                text-align: left;
+                font-size: 26px;
+                text-align: center;
+            }
+
+            #createPost {
+                float: right;
+                width: 100%;
+                height: 40px;
+                background-color: #5295d4;
+                cursor: pointer;
+                color:  #dacd99;
+                font-size: 20px;
+                border: black;
+                border-width: 0.1px;
+                border-style: solid;
+            }
+
+            #createPost:hover {
+                background-color:#4480b8;       
+            }
+            
+            #postInput {
+                visibility: hidden;
+                height: 0px;
+                width: 0%;
+                background-color: lightblue;
+            }
+
+            #postInputTitle {
+                height: 60px;
+                width: 25%;
+                float: left;
+                font-size: 20px;
+            }
+
+            #postInputBody {
+                height: 60px;
+                width: 65%;
+                float: left;
+                font-size: 15px;
+            }
+
+            #postInputButton {
+                height: 60px;
+                width: 10%;
+                float: right;
+                padding-right: 100px;
+                border: none;
+                cursor: pointer;
+                background-color: #3f8acf;
+                color: #dacd99;
+                font-size: 30px;
+                padding: 0px 0px;
+            }
+
+            #postInputButton:hover {
+                background-color:#4480b8;    
+            }
+
+            .allPost {
+                word-wrap: break-word;
+                width: 99.85%;
+                background-color:#4480b8;
+                border: black;
+                border-width: 0.1px;
+                border-style: solid;
+                border-top: none;
+                text-align: left;
+            }
+
+            .postBody {
+                font-size: 10px;
+                float:left
+            }
+
+            .allButton {
+                background-color: #5295d4;
+                border: black;
+                border-width: 0.1px;
+                border-style: solid;
+                cursor: pointer;
+            }
+
+            .allButton2 {
+                background-color: #5295d4;
+                border: black;
+                border-width: 0.1px;
+                border-style: solid;
+                cursor: pointer;
+            }
+
+            .allInput {
+                width: 200px;
+                font-size: 8pt;
+            }
+            .hidden{
+                visibility: hidden;
+                height: 0px;
+                width: 0%;
+                background-color: lightblue;
+            }
+            
+            
+        </style>
+        
+
+
+    </head>
+
+    <body>
+
+        <div class="everything">
+
+            <div class="topnav" id="myTopnav">
+            <a id = "title" href="index.html" class="active">POKEMON NOSTALGIA</a>
+            <a href="rules.html">Rules</a>
+            <a id = uid>Sign in to post/view posts</a>
+            <a id = "signIn" onclick = "signin()">Sign In</a>
+            </div>
+
+            <div id="space"></div>
+
+            <div class="discussionBody">
+                <a id="discussionBodyHeader">GEN V</a> 
+
+                <button id="createPost" onclick="createPostText()">*Click to create post!*</button>
+
+                <div id="postInput">
+                    <input type="text" id="postInputTitle" placeholder="Title: max 40 characters" maxlength="40">
+                    <input type="text" id="postInputBody" placeholder="Body: max 240 characters">
+                    <button id="postInputButton" onclick="createPost()">Post</button>
+                </div>
+
+                <div id="discussionBodyPosts">
+                    
+                </div>
+
+        </div>
+    </body>
+
+    <script>
+
+        var provider = new firebase.auth.GoogleAuthProvider();
+
+        var config = 
+        {
+            apiKey: "AIzaSyBwqPZ7xbApl1rq6NJYvlYT-uc_lPJpAsU",
+            authDomain: "forum-test-9ec2b.firebaseapp.com",
+            databaseURL: "https://forum-test-9ec2b-default-rtdb.firebaseio.com",
+            projectId: "forum-test-9ec2b",
+            storageBucket: "forum-test-9ec2b.appspot.com",
+            messagingSenderId: "966503766069",
+            appId: "1:966503766069:web:2357b7d4c1cf346c8b797c",
+            measurementId: "G-TJLGM41CNQ"
+        };
+
+        firebase.initializeApp(config);
+        
+    async function getPosts()
+           {
+            function toggleComment(key){
+                console.log(key)
+                var elements = document.getElementsByClassName(key)
+                
+for (var i = 0; i < elements.length; i++){
+        if(elements[i].classList.contains("hidden")){
+                    elements[i].classList.add("show")
+                    elements[i].classList.remove("hidden")
+                        }else{
+                    elements[i].classList.add("hidden")
+                    elements[i].classList.remove("show")
+                        }
+    }
+
+                     
+
+            }
+
+                function getComments(postid){
+
+                    return new Promise((resolve,reject)=>{
+                        firebase.database().ref(`${postid}/responses`).once('value').then((snap)=>{
+                        if(snap.exists()){
+                        data = snap.val() 
+                        resolve(data)
+                    }else{
+                        resolve({
+                            "null":{
+                                body:"No Replies"
+                            }
+                        })
+                    }
+                    
+                })
+                .catch((e)=>{
+                    reject(`${postid}: No Replies`)
+                })
+                    })
+                    
+                }
+                
+                firebase.database().ref().once('value').then((snap)=>{
+                    data = snap.val() 
+                    console.log(data)
+                    
+                    firebase.auth().onAuthStateChanged(function(user) 
+                        {
+                        userId = user.displayName
+                        });
+                                    
+                    Object.entries(data).forEach(async ([key,value])=>{
+                        var div = document.createElement('div')
+                        var text = document.createElement("p")
+                        div.classList = "allPost"
+                        var t = document.createTextNode(value.title)
+                        var b = document.createTextNode(value.body)
+                        var i = document.createElement('input')
+                        var space = document.createTextNode(": ")
+                        var ending = document.createTextNode(" - ")
+                        var n = document.createTextNode(userId)
+                        i.placeholder = "Max 240 words"
+                        i.maxLength = "240"
+                        i.classList = "allInput"
+                        i.id = key
+                        div.appendChild(t)
+                        div.appendChild(space)
+                        div.appendChild(b)
+                        div.appendChild(ending)
+                        div.appendChild(n)
+                        div.appendChild(i)
+                        var button = document.createElement("button")
+                        button.onclick = function(){return createResponse(key)}
+                        button.innerText = "reply"
+                        button.classList = "allButton"
+                        div.appendChild(button)
+                        var button2 = document.createElement("button")
+                        button2.innerText = "show/hide replies"
+                        button2.classList = "allButton2"
+                        button2.onclick = function(){toggleComment(`${key}comment`)}                         
+                        div.appendChild(button2)
+                        document.getElementById("discussionBodyPosts").appendChild(div)
+                        getComments(key).then((comments)=>{
+                            Object.entries(comments).forEach(([ckey,value])=>{
+                            var p = document.createElement('p')
+                            p.classList=`hidden ${key}comment`             
+                            var t = document.createTextNode(value.body)
+                            var space2 = document.createTextNode(" - ")
+                            var t2 = document.createTextNode(value.userId)
+                            p.appendChild(t)
+
+                            if (value.userId != undefined)
+                            {
+                                p.appendChild(space2)
+                                p.appendChild(t2)
+                            }
+
+                            div.appendChild(p)
+                        })
+                        })
+                        
+                        
+                    })
+                })
+
+               
+           } 
+           getPosts()
+
+
+        firebase.auth().onAuthStateChanged(function(user) 
+        {
+            if (user == null) 
+            {
+                document.getElementById("uid").innerHTML = "Sign in to post/view posts";
+
+                document.getElementById("signIn").innerHTML = "Sign In";
+                document.getElementById("signIn").setAttribute( "onClick", "javascript: signin();" );
+                return;
+            } 
+            else 
+            {
+                userId = user.displayName; 
+                document.getElementById("uid").innerHTML = "Welcome " + userId + "!";
+                
+                document.getElementById("signIn").innerHTML = "Sign Out";
+                document.getElementById("signIn").setAttribute( "onClick", "javascript: signout();" );
+            } 
+        }); 
+
+        function signin() 
+        {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider).then(() => {}).catch((error) => {});
+        }
+
+        function signout() 
+        {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signOut().then(() => {}).catch((error) => {});
+            window.location.href=window.location.href
+        }
+
+        function createPostText()
+        {
+                firebase.auth().onAuthStateChanged(function(user) 
+            {
+                if (user == null) 
+                {
+
+                }
+
+                else
+                {
+                    var postInput = document.getElementById('postInput');
+                    postInput.style.visibility='visible'
+                    postInput.style.width='100%'
+                    postInput.style.height='100px'
+                }
+            });
+        }
+
+        function createPost()
+        {
+            postTitle = document.getElementById("postInputTitle").value
+            postBody = document.getElementById("postInputBody").value
+            postRef = firebase.database().ref().push({
+                userId:userId,
+                title:postTitle,
+                body:postBody
+            })
+            .then(()=>{
+                window.location.reload();
+            })
+        }
+
+        function createResponse(postid){
+            postBody = document.getElementById(postid).value
+            postRef = firebase.database().ref(`${postid}/responses`).push({
+                userId:userId,
+                body:postBody
+            
+            })
+            .then(()=>{
+                window.location.reload();
+            })
+        }
+
+    </script>
+</html>
